@@ -1,4 +1,4 @@
-# FANISI TECHNICAL TEST APPLICATION
+# TECHNICAL TEST APPLICATION
 
 - This repo contains both the backend and the frontend components of the technical test, completed using NestJS and ReactJS respectively.
 
@@ -81,7 +81,10 @@ $ npm run start:prod
 $ npm start
 ```
 
-## Seeding the App
+## Postman/Insomnia Collection
+- Find an Insomnia/Postman collection in the root directory for testing the API: `fanisi-api.json`.
+
+## Seeding the Application
 - On your API testing client like Insomnia or Postman, make a POST request to this endpoint:
 ```{host:port}/seed```
 
@@ -94,9 +97,6 @@ $ npm start
 ## API Documentation 
 - Documentation can be found at `<BASE_URL>/api-docs`.
 - Localhost Example: `http://localhost:2000/api-docs`.
-
-## Testing the API
-- Find an Insomnia/Postman collection in the root directory for testing the API: `api-testing.json`.
 
 ## Running Tests
 - To run backend test cases, navigate to the backend directory and use the following commands:
