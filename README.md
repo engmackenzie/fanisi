@@ -25,13 +25,7 @@ $ cd frontend/
 $ npm install
 ```
 
-## Setting up a database & ENV file for the backend
-- Run a postgres database quickly if you have docker installed using the command below. Ensure you are in the backend directory when running this command.
-- Alternatively you can create a database manually and fill out the required details in the .env file.
-```bash
-$ docker-compose up
-```
-
+## Setting up your .env file for the backend
 - Create a .env file at the root of the backend directory with the following template.
 ```
 # ENVIRONMENT
@@ -57,16 +51,14 @@ TEST_DB_LOGGING=true
 # AUTH CONFIGURATION
 BYCRYPT_SALT_ROUNDS=10
 JWT_ACCESS_TOKEN_SECRET=20c298e9-63d3-46a8-9b72-7f9e193c5eda6c1f3a71-7d69-4312-a05c-cc93779d8616
-JWT_REFRESH_TOKEN_SECRET=799641e4-801d-481c-9e40-994a7c479056799641e4-801d-481c-9e40-994a7c479056
 JWT_ACCESS_TOKEN_EXPIRATION=24h
-JWT_REFRESH_TOKEN_EXPIRATION=24h
+```
 
-# MAILER CONFIGURATION
-MAIL_HOST='smtp.gmail.com'
-MAIL_PORT=587
-MAIL_USER='some_email@gmail.com'
-MAIL_PASSWORD='some_token'
-MAIL_FROM='some_email@gmail.com'
+## Setting up a Database
+- Run a postgres database quickly if you have docker installed using the command below. Ensure you are in the backend directory when running this command.
+- Alternatively you can create a database manually and fill out the required details in the .env file.
+```bash
+$ docker-compose up
 ```
 
 ## Running the application
