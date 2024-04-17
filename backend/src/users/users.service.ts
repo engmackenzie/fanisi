@@ -111,7 +111,6 @@ export class UsersService {
   }
 
   async update(
-    user: User,
     id: string,
     updateUserDto: UpdateUserDto,
   ): Promise<MsgResponse> {

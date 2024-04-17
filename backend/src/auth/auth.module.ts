@@ -6,19 +6,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './passport-strategy/jwt.strategy';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { APP_GUARD } from '@nestjs/core';
-import { RolesModule } from 'src/roles/roles.module';
 import { AuthorizationGuard } from './guard/authorization.guard';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Token } from './entities/token.entity';
-import { SmsesModule } from 'src/smses/smses.module';
 
 @Module({
   imports: [
     UsersModule,
     JwtModule,
-    RolesModule,
-    TypeOrmModule.forFeature([Token]),
-    SmsesModule,
   ],
   providers: [
     AuthService,

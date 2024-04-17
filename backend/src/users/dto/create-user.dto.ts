@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import {
+  IsBoolean,
   IsEmail,
   IsNotEmpty,
   IsPhoneNumber,
   IsString,
-  Validate,
+  Matches,
 } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
   @ApiProperty({ example: 'John Doe' })
@@ -31,9 +33,4 @@ export class CreateUserDto {
 
   @IsBoolean()
   is_admin: boolean;
-}
-
-export enum UserStatus {
-  active = 'active',
-  inactive = 'inactive',
 }

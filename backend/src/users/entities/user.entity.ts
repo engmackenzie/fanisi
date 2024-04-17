@@ -1,9 +1,16 @@
-import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
-import { UserStatus } from '../dto/create-user.dto';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  CreateDateColumn,
+  DeleteDateColumn,
+} from 'typeorm';
 import { compare } from 'bcrypt';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity({ name: 'users' })
-export class User extends BaseEntity {
+export class User {
   @ApiProperty({ type: String, format: 'uuid' })
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -34,6 +41,9 @@ export class User extends BaseEntity {
     nullable: true,
   })
   updated_at: Date;
+
+  @DeleteDateColumn({ type: 'timestamp', nullable: true })
+  deleted_at: Date;
 
   async validatePassword(password: string): Promise<boolean> {
     return compare(password, this.password);

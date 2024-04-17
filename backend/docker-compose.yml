@@ -5,8 +5,10 @@ services:
     image: postgres:12-alpine
     restart: always
     environment:
-      POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: fanisi
+      POSTGRES_HOST: ${TEST_DB_HOST}
+      POSTGRES_PORT: ${TEST_DB_PORT}
+      POSTGRES_DB: ${TEST_DB_NAME}
+      POSTGRES_USER: ${TEST_DB_USERNAME}
+      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD}
     ports:
-      - 7001:5432
+      - 7052:5432

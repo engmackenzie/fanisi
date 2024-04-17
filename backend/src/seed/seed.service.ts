@@ -3,7 +3,6 @@ import { TryCatchError } from 'src/common/errors/try-catch.errors';
 import { MsgResponse } from 'src/common/responses.common';
 import { User } from 'src/users/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
-import { UserStatus } from 'src/users/dto/create-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 

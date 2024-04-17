@@ -4,7 +4,6 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { TryCatchError } from 'src/common/errors/try-catch.errors';
 import { UsersService } from 'src/users/users.service';
-import { RolesService } from 'src/roles/roles.service';
 
 type JwtPayload = {
   id: string;
@@ -18,7 +17,6 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     // eslint-disable-next-line no-unused-vars
     private readonly usersService: UsersService,
     // eslint-disable-next-line no-unused-vars
-    private readonly rolesService: RolesService,
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
