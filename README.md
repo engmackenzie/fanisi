@@ -1,6 +1,6 @@
 # FANISI TECHNICAL TEST APPLICATION
 
-- This repo contains both the backend and the frontend components, completed using NestJS and ReactJS respectively.
+- This repo contains both the backend and the frontend components of the technical test, completed using NestJS and ReactJS respectively.
 
 
 ## Getting Started
@@ -86,11 +86,10 @@ $ npm start
 ```{host:port}/seed```
 
 - When seeding, make sure you set your NODE_ENV variable to any of: `dev`, `test`, or `development`.
-- Seeded items include:
-  - Organizations
-    - One demo organization
-  - Users
-    - SuperAdmin user
+- Seeding creates a default admin user with the following credentials:
+  - email: `admin@email.com`
+  - password: `Pass@word1`
+- These credentials can then be used to perform CRUD operations on other resources eg. creating new users.
 
 ## API Documentation 
 - Documentation can be found at `<BASE_URL>/api-docs`.
