@@ -15,19 +15,22 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @ApiProperty({ example: 'John Doe' })
   @Column()
   name: string;
 
+  @ApiProperty({ type: String, example: 'admin@example.com' })
   @Column({ unique: true })
   email: string;
 
-
+  @ApiProperty({ example: '+254712345678' })
   @Column({ unique: true })
   phone_number: string;
 
   @Column()
   password: string
 
+  @ApiProperty({ example: true })
   @Column({ default: false })
   is_admin: boolean
 

@@ -6,7 +6,6 @@ import {
   Param,
   Delete,
   ValidationPipe,
-  Request,
   ParseUUIDPipe,
   Put,
   Query,

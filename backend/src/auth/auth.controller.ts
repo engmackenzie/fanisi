@@ -11,6 +11,9 @@ import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { AllowAnon, DisableAnon } from 'src/common/decorators/auth.decorators';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { RegisterDto } from './dto/register.dto';
+import { Permission } from 'src/common/decorators/permission.decorator';
+import { Permissions } from 'src/common/constants/permissions.constants';
 
 @AllowAnon()
 @Controller('auth')
@@ -23,5 +26,12 @@ export class AuthController {
   @Post('/login')
   async login(@Body(new ValidationPipe()) loginDto: LoginDto) {
     return this.authService.login(loginDto);
+  }
+
+  @DisableAnon()
+  @Permission(Permissions.REGISTER_USER)
+  @Post('/register')
+  async register(@Body(new ValidationPipe()) registerDto: RegisterDto) {
+    return this.authService.register(registerDto);
   }
 }

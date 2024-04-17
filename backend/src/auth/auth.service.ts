@@ -9,6 +9,7 @@ import { TryCatchError } from 'src/common/errors/try-catch.errors';
 import { hash, compare } from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { RegisterDto } from './dto/register.dto';
 
 
 @Injectable()
@@ -48,6 +49,22 @@ export class AuthService {
       return new SingleObjectResponse({ user, ...token });
     } catch (error) {
       new TryCatchError().catchError(error, 'User', '', 'logging in');
+    }
+  }
+
+  async register(registerDto: RegisterDto): Promise<MsgResponse> {
+    try {
+
+      await this.usersService.create(registerDto);
+
+      return new MsgResponse('User created successfully');
+    } catch (error) {
+      new TryCatchError().catchError(
+        error,
+        'User',
+        'email or phone_number',
+        'creating',
+      );
     }
   }
 

@@ -15,14 +15,13 @@ export class AuthorizationGuard implements CanActivate {
     );
     // allow access to non-protected endpoints
     if (!requiredPermission) return true;
+    console.log(requiredPermission)
 
     const { user } = context.switchToHttp().getRequest();
     // check if required permission is present in user permissions
     // allow admin to access all
     if (user.is_admin) return true;
-    if (!user.permissions.includes(requiredPermission[0])) {
-      return false;
-    }
+    if (!user.permissions || !user.permissions.includes(requiredPermission[0])) return false;
     return true;
   }
 }
