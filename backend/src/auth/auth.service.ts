@@ -24,6 +24,11 @@ export class AuthService {
     try {
       const { email, password } = loginDto;
       const user = await this.usersService.findOneByEmail(email);
+      if (!user) throw new HttpException(
+        'Invalid email or password',
+        HttpStatus.UNAUTHORIZED,
+      );
+
       const isPasswordValid = await user.validatePassword(password);
       if (!isPasswordValid) {
         throw new HttpException(
@@ -34,6 +39,11 @@ export class AuthService {
 
       // generate token
       const token = await this.generateToken(user);
+      
+      // remove unnecessary fields in user
+      delete user.password;
+      delete user.updated_at;
+      delete user.deleted_at;
 
       return new SingleObjectResponse({ user, ...token });
     } catch (error) {

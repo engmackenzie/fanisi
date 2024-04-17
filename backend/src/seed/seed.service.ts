@@ -23,16 +23,15 @@ export class SeedService {
           400,
         );
 
-      // create super admin
-      const user = await this.usersService.findAll({
-        email: 'admin@example.com',
-      });
-      if (user.data.length === 0) {
+      // create admin
+      const user = await this.usersService.findOneByEmail('admin@example.com');
+      console.log(user)
+      if (!user) {
         console.log('Default Admin not found...');
         console.log('Creating a default admin...');
         await this.usersService.create({
-          name: 'admin@example.com',
-          email: 'larkinsian1@gmail.com',
+          name: 'Admin',
+          email: 'admin@example.com',
           phone_number: '+254712345678',
           password: 'Pass@word1',
           is_admin: true,
