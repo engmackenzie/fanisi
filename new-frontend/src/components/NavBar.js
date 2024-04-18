@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -7,18 +7,23 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
+import { useNavigate } from 'react-router-dom';
 
 const NavBar = ({ heading }) => {
-  const user = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-  };
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  useEffect(() => {
+    if (localStorage.getItem('token') && user) {
+      navigate('/');
+    };
+  }, []);
 
   // Function to handle logout (replace with actual logout logic)
   const handleLogout = () => {
-    // Implement logout logic here
-    console.log('User logged out');
-  };
+    localStorage.clear();
+    navigate('/login');
+  }
 
   // Get initials from user's name
   const getInitials = (name) => {

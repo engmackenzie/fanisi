@@ -150,7 +150,8 @@ export class UsersService {
         throw new HttpException('User not found', HttpStatus.NOT_FOUND);
       }
 
-      await this.userRepository.softDelete({ id });
+      // await this.userRepository.softDelete({ id });
+      await this.userRepository.delete({ id });
       return new MsgResponse('User deleted successfully');
     } catch (error) {
       new TryCatchError().catchError(

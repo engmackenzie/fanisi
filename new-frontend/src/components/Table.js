@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import {
   MaterialReactTable,
   useMaterialReactTable,
+  getMRT_RowSelectionHandler,
 } from 'material-react-table';
 import {
   ListItemIcon,
@@ -39,11 +40,18 @@ const Table = ({ data, onEditUser, onDeleteUser }) => {
   const table = useMaterialReactTable({
     columns,
     data,
-    initialState: { density: 'comfortable', pagination: { pageSize: 5, pageIndex: 1 } },
+    initialState: { density: 'comfortable', pagination: { pageSize: 5 } },
     enableFullScreenToggle: false,
     enableDensityToggle: false,
     enableRowActions: true,
     positionActionsColumn: 'last',
+    muiTableBodyRowProps: ({ row, staticRowIndex, table }) => ({
+      onClick: (event) => {
+        getMRT_RowSelectionHandler({ row, staticRowIndex, table })(event);
+        onEditUser(row.original);
+      },
+      sx: { cursor: 'pointer' },
+    }),
     renderRowActionMenuItems: ({ row, closeMenu }) => [
       <MenuItem
         key={0}

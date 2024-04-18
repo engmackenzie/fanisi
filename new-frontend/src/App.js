@@ -10,7 +10,7 @@ import DashboardPage from "./pages/DashboardPage";
 import './App.css';
 
 function App() {
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   const requiresLogin = (Component) => {
     return isSignedIn ? Component : <Navigate to="/login" />;

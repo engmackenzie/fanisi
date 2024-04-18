@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '../components/Table';
@@ -14,22 +15,13 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import serverUrl from '../config/config';
 
 const DashboardPage = props => {
-  const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1NGJiNTE3LTI1MDgtNDFjOC1iMDc2LTAxOTAzNTk1Yjg5OSIsImlhdCI6MTcxMzQ1NDI0MCwiZXhwIjoxNzEzNTQwNjQwfQ.Khqa2E40Rlutu8OW33jz4ET-4rmSVoRKNKhY8PRGUJw';
-  const serverUrl = 'http://localhost:2000'; // this can be move to a .env
-  const [data, setData] = useState([
-    { id: 1, name: 'James Orengo', email: 'james@email.com', phone_number : '0712345678', company: 'Safaricom' },
-    { id: 2, name: 'Stephen Kimani', email: 'steve@email.com', phone_number : '0712345678', company: 'Airtel' },
-    { id: 3, name: 'Stephen Kimani', email: 'steve@email.com', phone_number : '0712345678', company: 'Airtel' },
-    { id: 4, name: 'Stephen Kimani', email: 'steve@email.com', phone_number : '0712345678', company: 'Airtel' },
-    { id: 5, name: 'Stephen Kimani', email: 'steve@email.com', phone_number : '0712345678', company: 'Airtel' },
-    { id: 6, name: 'Stephen Kimani', email: 'steve@email.com', phone_number : '0712345678', company: 'Airtel' },
-    { id: 7, name: 'Stephen Kimani', email: 'steve@email.com', phone_number : '0712345678', company: 'Airtel' },
-    { id: 8, name: 'Eliud Kipchoge', email: 'kipchoge@email.com', phone_number : '0712345678', company: 'Telkom' },
-    { id: 9, name: 'Eliud Kipchoge', email: 'kipchoge@email.com', phone_number : '0712345678', company: 'Telkom' },
-    { id: 10, name: 'Eliud Kipchoge', email: 'kipchoge@email.com', phone_number : '0712345678', company: 'Telkom' },
-  ]);
+  const navigate = useNavigate();
+  const token = `Bearer ${localStorage.getItem('token')}`;
+  const [data, setData] = useState([]);
+
   const getUsers = async () => {
     try {
       const response = await fetch(serverUrl + '/users', {
@@ -49,6 +41,7 @@ const DashboardPage = props => {
   };
 
   useEffect(() => {
+    if (!token) navigate('/login');
     getUsers(); // Fetch users when component mounts
   }, []); // Empty dependency array to run effect only once
 
