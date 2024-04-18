@@ -18,14 +18,14 @@ function App() {
 
   return (
     <Router>
-        <Routes>
-          <Route path="/login" element={<LoginPage isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>} />
-          <Route
-            path="*"
-            element={requiresLogin(<DashboardPage />)}
-          />
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/login" element={<LoginPage isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>} />
+        <Route
+          path="*"
+          element={requiresLogin(<DashboardPage />)}
+        />
+      </Routes>
+    </Router>
   );
 }
 

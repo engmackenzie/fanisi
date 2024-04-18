@@ -27,7 +27,6 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto): Promise<MsgResponse> {
     try {
-
       const hashedPassword = await hash(
         createUserDto.password,
         Number(process.env.BYCRYPT_SALT_ROUNDS),

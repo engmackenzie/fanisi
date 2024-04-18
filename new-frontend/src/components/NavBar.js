@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Avatar from '@mui/material/Avatar';
+import Tooltip from '@mui/material/Tooltip';
 
 const NavBar = ({ heading }) => {
   const user = {
@@ -39,12 +40,16 @@ const NavBar = ({ heading }) => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {heading}
         </Typography>
-        <Avatar sx={{ bgcolor: 'white', width: 40, height: 40 }}>
-          <span style={{ color: '#1976D2' }}>{getInitials(user.name)}</span>
-        </Avatar>
-        <IconButton color="inherit" onClick={handleLogout}>
-          <ExitToAppIcon />
-        </IconButton>
+        <Tooltip title={`${user.name} (${user.email})`}>
+          <Avatar sx={{ bgcolor: 'white', width: 40, height: 40 }}>
+            <span style={{ color: '#1976D2' }}>{getInitials(user.name)}</span>
+          </Avatar>
+        </Tooltip>
+        <Tooltip title="Logout">
+          <IconButton color="inherit" onClick={handleLogout}>
+            <ExitToAppIcon />
+          </IconButton>
+        </Tooltip>
       </Toolbar>
     </AppBar>
   );

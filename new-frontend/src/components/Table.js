@@ -23,8 +23,8 @@ const Table = ({ data, onEditUser, onDeleteUser }) => {
         size: 150,
       },
       {
-        accessorKey: 'phone',
-        header: 'Phone',
+        accessorKey: 'phone_number',
+        header: 'Phone No.',
         size: 200,
       },
       {
