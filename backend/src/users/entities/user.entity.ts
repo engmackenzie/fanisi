@@ -34,6 +34,11 @@ export class User {
   @Column({ default: false })
   is_admin: boolean
 
+  // added this to use in the frontend
+  @ApiProperty({ example: 'Equity Bank' })
+  @Column()
+  company: string
+
   @ApiProperty({ type: Date })
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;

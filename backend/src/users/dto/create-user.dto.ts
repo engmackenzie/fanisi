@@ -31,6 +31,11 @@ export class CreateUserDto {
   @IsString()
   password: string;
 
+  @ApiProperty({ example: 'Equity Bank' })
+  @IsString()
+  @IsNotEmpty()
+  company: string;
+
   @IsBoolean()
   is_admin: boolean;
 }
