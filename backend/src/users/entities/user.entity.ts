@@ -36,7 +36,7 @@ export class User {
 
   // added this to use in the frontend
   @ApiProperty({ example: 'Equity Bank' })
-  @Column()
+  @Column({ default: '' })
   company: string
 
   @ApiProperty({ type: Date })

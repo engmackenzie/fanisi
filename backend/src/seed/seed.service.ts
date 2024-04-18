@@ -35,6 +35,7 @@ export class SeedService {
           phone_number: '+254712345678',
           password: 'Pass@word1',
           is_admin: true,
+          company: 'Fanisi LTD',
         });
         console.log('Admin created successfully...');
       }
