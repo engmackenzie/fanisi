@@ -33,13 +33,13 @@ export class UsersController {
   }
 
   @Get()
-  @Permission(Permissions.READ_USER)
+  // @Permission(Permissions.READ_USER)
   async findAll(@Query() query) {
     return this.usersService.findAll(query);
   }
 
   @Get(':id')
-  @Permission(Permissions.READ_USER)
+  // @Permission(Permissions.READ_USER)
   async findOne(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.usersService.findOne(id);
   }
